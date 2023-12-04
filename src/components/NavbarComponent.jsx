@@ -1,0 +1,39 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+import logo from '../assets/elecronlogo.png';
+import InputComponents from './InputComponents';
+
+// icons
+import { FaUser, FaHeart, FaShoppingCart } from "react-icons/fa";
+
+function NavbarComponent() {
+    return (
+        <div className='bg-mainBlue h-[100px]'>
+            <div className='container mx-auto flex justify-between items-center h-[100px]'>
+                <Link to='/'>
+                    <img src={logo} alt="elecronLogo" />
+                </Link>
+
+                <InputComponents />
+
+                <div className='flex gap-7'>
+                    <div className='flex items-center gap-1'>
+                        <FaUser className='text-[#fff] text-2xl cursor-pointer' />
+                        <Link to='/login' className='text-[#fff] text-lg'>Sign In</Link>
+                    </div>
+                    <div className='flex items-center gap-1'>
+                        <FaHeart className='text-[#fff] text-2xl cursor-pointer' />
+                        <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>0</span>
+                    </div>
+                    <div className='flex items-center gap-1'>
+                        <FaShoppingCart className='text-[#fff] text-2xl cursor-pointer' />
+                        <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default NavbarComponent
