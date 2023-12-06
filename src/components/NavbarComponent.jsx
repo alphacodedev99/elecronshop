@@ -6,8 +6,12 @@ import InputComponents from './InputComponents';
 
 // icons
 import { FaUser, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 function NavbarComponent() {
+
+    const { user } = useSelector((state) => state.userStore);
+    console.log(user);
     return (
         <div className='bg-mainBlue h-[100px]'>
             <div className='container mx-auto flex justify-between items-center h-[100px]'>
@@ -18,10 +22,16 @@ function NavbarComponent() {
                 <InputComponents />
 
                 <div className='flex gap-7'>
-                    <div className='flex items-center gap-1'>
+                    {localStorage.hasOwnProperty('elUser') ? <div>
+                        <Link to='/profile'>
+                            <img src={user.image} alt="" className='w-[50px] rounded-full border border-mainYellow object-cover' />
+                        </Link>
+                    </div> : <div className='flex items-center gap-1'>
                         <FaUser className='text-[#fff] text-2xl cursor-pointer' />
                         <Link to='/login' className='text-[#fff] text-lg'>Sign In</Link>
-                    </div>
+                    </div>}
+
+
                     <div className='flex items-center gap-1'>
                         <FaHeart className='text-[#fff] text-2xl cursor-pointer' />
                         <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>0</span>
