@@ -10,7 +10,6 @@ const productSlice = createSlice({
     },
     reducers: {
         categoryHandler: (state, action) => {
-            // console.log(action.payload);
             state.category = action.payload;
         },
         productsHandler: (state, action) => {

@@ -13,7 +13,7 @@ function NavbarComponent() {
     const { user } = useSelector((state) => state.userStore);
 
     return (
-        <div className='bg-mainBlue h-[100px]'>
+        <div className='bg-mainBlue h-[100px] px-[15px] md:px-0'>
             <div className='container mx-auto flex justify-between items-center h-[100px]'>
                 <Link to='/'>
                     <img src={logo} alt="elecronLogo" />

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function CategoryComponents() {
-    const [isActive, setIsActive] = useState(true);
+    const [isActive, setIsActive] = useState(false);
 
     const { category } = useSelector(state => state.productStore);
     const dispatch = useDispatch();

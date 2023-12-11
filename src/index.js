@@ -11,6 +11,7 @@ import ProductPage from './pages/ProductPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
+import ProductDetailsPage from './pages/ProductDetailsPage.jsx';
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <ProfilePage />
+      },
+      {
+        path: '/productDetails/:id',
+        element: <ProductDetailsPage />
       }
     ],
 
