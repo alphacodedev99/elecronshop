@@ -8,12 +8,16 @@ import { RxCross2 } from "react-icons/rx";
 import { CiHeart } from "react-icons/ci";
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
+import { useDispatch } from 'react-redux';
+import { saveProductHandler } from '../store/cartSlice';
 
 function ProductDetailsPage() {
 
     const [product, setProduct] = useState({});
     const [currentImage, setCurrentImage] = useState(0);
     const [value, setValue] = useState(1);
+
+    const dispatch = useDispatch();
 
     let { id } = useParams();
 
@@ -23,10 +27,15 @@ function ProductDetailsPage() {
             .then(res => {
                 setProduct(res.data)
                 setValue(res.data.rating)
-                console.log(res.data);
+
             })
             .catch(err => console.log(err))
     }, [])
+
+    // Ovde dodajemo u nas cartSlice(jedan proizovd!)
+    function productHandler() {
+        dispatch(saveProductHandler(product))
+    }
 
 
     return (
@@ -73,18 +82,24 @@ function ProductDetailsPage() {
                         <h3>Hurry up! only <span className='font-bold'>{product.stock}</span> product left in stock!</h3>
                     </div>
 
-                    <div >
-                        <h3>Total Price: ${product.price}</h3>
+                    <div className='mt-[50px]' >
+                        <h3 className='text-xl'>Total Price: <span className='text-mainBlue font-bold text-2xl'>${product.price}</span></h3>
                         <div className='flex items-center'>
-                            <p>Quantity:</p>
-                            <button>+</button>
-                            <span>0</span>
-                            <button> - </button>
+                            <p className='mr-[20px]'>Quantity:</p>
+                            <button className='px-[8px] py-[4px] bg-slate-400'>+</button>
+                            <span className='px-[8px] py-[4px] bg-slate-400'>0</span>
+                            <button className='px-[8px] py-[4px] bg-slate-400'> - </button>
                         </div>
 
-                        <div>
-                            <Link to='/'>Add To Cart</Link>
-                            <Link to='/'><CiHeart /></Link>
+                        <div className='flex items-center gap-5 mt-[20px]'>
+                            <Link
+                                to='/cartProducts'
+                                className='bg-mainYellow px-[24px] py-[12px] rounded-full text-white'
+                                onClick={() => productHandler()}
+                            >
+                                Add To Cart
+                            </Link>
+                            <Link to='/' className='bg-mainYellow px-[24px] py-[12px] rounded-full '><CiHeart size={32} color='white' /></Link>
                         </div>
                     </div>
                 </div>

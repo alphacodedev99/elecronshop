@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 function NavbarComponent() {
 
     const { user } = useSelector((state) => state.userStore);
+    const { totalProducts } = useSelector((state) => state.cartStore);
 
     return (
         <div className='bg-mainBlue h-[100px] px-[15px] md:px-0'>
@@ -38,7 +39,7 @@ function NavbarComponent() {
                     </div>
                     <div className='flex items-center gap-1'>
                         <FaShoppingCart className='text-[#fff] text-2xl cursor-pointer' />
-                        <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>0</span>
+                        <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>{totalProducts ? totalProducts : 0}</span>
                     </div>
                 </div>
             </div>
