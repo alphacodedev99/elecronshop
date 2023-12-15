@@ -12,6 +12,8 @@ function NavbarComponent() {
 
     const { user } = useSelector((state) => state.userStore);
     const { totalProducts } = useSelector((state) => state.cartStore);
+    const { favoriteTotal } = useSelector((state) => state.favoriteStore);
+
 
     return (
         <div className='bg-mainBlue h-[100px] px-[15px] md:px-0'>
@@ -34,8 +36,10 @@ function NavbarComponent() {
 
 
                     <div className='flex items-center gap-1'>
-                        <FaHeart className='text-[#fff] text-2xl cursor-pointer' />
-                        <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>0</span>
+                        <Link to='/favoriteProducts'>
+                            <FaHeart className='text-[#fff] text-2xl cursor-pointer' />
+                        </Link>
+                        <span className='bg-mainYellow text-[#fff] rounded-full px-[5px]'>{favoriteTotal}</span>
                     </div>
                     <div className='flex items-center gap-1'>
                         <FaShoppingCart className='text-[#fff] text-2xl cursor-pointer' />

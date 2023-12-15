@@ -40,13 +40,13 @@ const cartSlice = createSlice({
         },
         setPriceHandler: (state, action) => {
             const { increment, index } = action.payload;
+            // Promeniti logiku, da se salje item(jedan prozivod preko action.payload) i da se nadje index u array-u(stata.cart);
 
             let copyArray = [...state.cart];
 
             copyArray[index].cartTotal += copyArray[index].price * increment;
 
             state.totalPrice = subTotal(copyArray);
-            // totalPrice
 
             // ovde hendlujem MINUS(increment)
             if (copyArray[index].count === 1 && increment === -1) {
